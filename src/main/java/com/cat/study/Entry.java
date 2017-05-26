@@ -1,7 +1,6 @@
 package com.cat.study;
 
-import com.cat.study.domain.Student;
-import org.springframework.context.ApplicationContext;
+import com.cat.study.domain.ExampleBean;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -10,8 +9,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Entry {
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-        Student student = context.getBean(Student.class);
-        System.out.println(student);
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        context.getBean(ExampleBean.class);
+        context.close();
     }
 }
