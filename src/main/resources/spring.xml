@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <context:component-scan base-package="com.cat.study.domain"/>
 
@@ -9,6 +9,19 @@
         <property name="id" value="100"/>
         <property name="name" value="zsy"/>
     </bean>
+    <bean name="student1" class="com.cat.study.domain.Student" p:id="47" p:name="hello"/>
+    <bean name="student2" class="com.cat.study.domain.Student">
+        <constructor-arg name="id" value="99"/>
+        <constructor-arg name="name" value="cjj"/>
+    </bean>
+    <bean name="student3" class="com.cat.study.domain.Student">
+        <constructor-arg value="99"/>
+        <constructor-arg value="cjj"/>
+    </bean>
+
 
     <bean id="exampleBean" class="com.cat.study.domain.ExampleBean" init-method="initMethod" destroy-method="destroyMethod"/>
+
+    <util:list></util:list>
+
 </beans>

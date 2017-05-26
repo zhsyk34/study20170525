@@ -2,6 +2,7 @@ package com.cat.study.domain;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -25,7 +26,8 @@ public class ExampleBean implements
         BeanNameAware,
         ApplicationContextAware,
         InitializingBean,
-        DisposableBean {
+        DisposableBean,
+        BeanPostProcessor {
 
     public ExampleBean() {
         System.out.println(ExampleBean.class.getSimpleName() + " construct");
@@ -72,5 +74,23 @@ public class ExampleBean implements
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         System.out.println("ApplicationContextAware");
+    }
+
+    @Override
+    public Object postProcessBeforeInitialization(Object o, String s) throws BeansException {
+        System.out.println("BeanPostProcessor:post");
+//        System.out.println(s);
+//        System.out.println(o.getClass());
+//        return o;
+        return null;
+    }
+
+    @Override
+    public Object postProcessAfterInitialization(Object o, String s) throws BeansException {
+        System.out.println("BeanPostProcessor:after");
+//        System.out.println(s);
+//        System.out.println(o.getClass());
+//        return o;
+        return null;
     }
 }
