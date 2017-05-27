@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd"
+>
 
-    <context:component-scan base-package="com.cat.study.domain"/>
+    <!--beans-->
+    <!-- default-init-method=""
+       default-destroy-method=""
+       default-lazy-init=""-->
+
+    <!--<context:component-scan base-package="com.cat.study.domain"/>-->
 
     <bean name="student" class="com.cat.study.domain.Student">
         <property name="id" value="100"/>
         <property name="name" value="zsy"/>
     </bean>
     <bean name="student1" class="com.cat.study.domain.Student" p:id="47" p:name="hello"/>
-    <bean name="student2" class="com.cat.study.domain.Student">
+    <bean name="student2" class="com.cat.study.domain.Student" primary="true">
         <constructor-arg name="id" value="99"/>
         <constructor-arg name="name" value="cjj"/>
     </bean>
@@ -19,9 +30,21 @@
         <constructor-arg value="cjj"/>
     </bean>
 
+    <!--<bean id="exampleBean" class="com.cat.study.domain.ExampleBean" init-method="initMethod" destroy-method="destroyMethod"/>-->
 
-    <bean id="exampleBean" class="com.cat.study.domain.ExampleBean" init-method="initMethod" destroy-method="destroyMethod"/>
+    <bean class="com.cat.study.domain.Teacher" p:id="49" p:age="47" p:name="zsy" p:interests-ref="interests"/>
 
-    <util:list></util:list>
+    <util:list id="interests">
+        <value>music</value>
+        <value>football</value>
+        <value>eat</value>
+    </util:list>
 
+    <description></description>
+    <import resource="http:"/>
+    <
+
+    <!--<alias name="" alias=""/>-->
+
+    <!--<aop:scoped-proxy proxy-target-class="true"/>-->
 </beans>

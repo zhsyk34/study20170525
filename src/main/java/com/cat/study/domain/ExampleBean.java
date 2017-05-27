@@ -17,6 +17,8 @@ import javax.annotation.PreDestroy;
  * postConstruct
  * InitializingBean
  * initMethod
+ * BeanPostProcessor:post
+ * BeanPostProcessor:after
  * preDestroy
  * DisposableBean
  * destroyMethod
@@ -79,18 +81,12 @@ public class ExampleBean implements
     @Override
     public Object postProcessBeforeInitialization(Object o, String s) throws BeansException {
         System.out.println("BeanPostProcessor:post");
-//        System.out.println(s);
-//        System.out.println(o.getClass());
-//        return o;
-        return null;
+        return o;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object o, String s) throws BeansException {
         System.out.println("BeanPostProcessor:after");
-//        System.out.println(s);
-//        System.out.println(o.getClass());
-//        return o;
-        return null;
+        return o;
     }
 }
